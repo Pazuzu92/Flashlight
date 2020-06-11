@@ -21,6 +21,7 @@ build/
 /captures
 .externalNativeBuild
 .cxx
+.jks
 
 # Idea files
 /.idea/workspace.xml
