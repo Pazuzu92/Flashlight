@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Flashlight</string>
+    <string name="error_text">Вспышка камеры недоступна!</string>
+    <string name="error_title">Ошибка! Нет вспышки!</string>
+    <string name="exit_message">Выход</string>
+    <string name="permdesc_flashlight">On</string>
+</resources>
