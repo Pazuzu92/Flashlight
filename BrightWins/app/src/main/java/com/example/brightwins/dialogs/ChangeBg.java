@@ -1,12 +1,14 @@
 package com.example.brightwins.dialogs;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
@@ -16,9 +18,8 @@ import com.example.brightwins.MainInterface;
 import com.example.brightwins.R;
 
 public class ChangeBg extends DialogFragment implements View.OnClickListener, RadioGroup.OnCheckedChangeListener {
-    private Activity mainActivity;
     private MainInterface interface1;
-    RadioGroup radioGroup;
+    private RadioGroup radioGroup;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -27,7 +28,6 @@ public class ChangeBg extends DialogFragment implements View.OnClickListener, Ra
     }
 
     public ChangeBg(MainActivity mainActivity) {
-        this.mainActivity = mainActivity;
 
     }
 
@@ -40,8 +40,6 @@ public class ChangeBg extends DialogFragment implements View.OnClickListener, Ra
         radioGroup.setOnCheckedChangeListener(this);
         return v;
     }
-
-
 
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -58,6 +56,13 @@ public class ChangeBg extends DialogFragment implements View.OnClickListener, Ra
             default:
                 break;
         }
+    }
+
+    public void onResume(){
+        super.onResume();
+        Window window = getDialog().getWindow();
+        window.setLayout(RelativeLayout.LayoutParams.WRAP_CONTENT, 1200);
+        window.setGravity(Gravity.CENTER);
     }
 
     @Override

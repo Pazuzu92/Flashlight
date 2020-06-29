@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -25,17 +24,12 @@ import static com.example.brightwins.dialogs.Settings.SHAKE;
 import static com.example.brightwins.dialogs.Settings.SWIPE;
 
 public class MainActivity extends AppCompatActivity implements ShakeDetector.Listener, View.OnClickListener, MainInterface {
-    private Animation fallingAnimation, upAnimation;
-    private ImageView mImageView1, mImageView2, mImageView3, mImageView4, mImageView5;
+    private ImageView coin1, coin2, coin3, coin4, coin5;
     private ViewGroup containerView;
-    private RelativeLayout.LayoutParams params;
-    private ImageView curFallingImageView;
     DialogFragment dlg1, settings;
     RelativeLayout relativeLayout;
     private GestureDetectorCompat gestureDetectorCompat = null;
     private int flag = 0;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,26 +37,19 @@ public class MainActivity extends AppCompatActivity implements ShakeDetector.Lis
         setContentView(R.layout.activity_main);
         relativeLayout = findViewById(R.id.container1);
 
-
-
-        mImageView1 = findViewById(R.id.coin_1);
-        mImageView2 = findViewById(R.id.coin_2);
-        mImageView3 = findViewById(R.id.coin_3);
-        mImageView4 = findViewById(R.id.coin_4);
-        mImageView5 = findViewById(R.id.coin_5);
+        coin1 = findViewById(R.id.coin_1);
+        coin2 = findViewById(R.id.coin_2);
+        coin3 = findViewById(R.id.coin_3);
+        coin4 = findViewById(R.id.coin_4);
+        coin5 = findViewById(R.id.coin_5);
         ImageView Settings = findViewById(R.id.btn_settings);
         dlg1 = new ChangeBg(this);
         settings = new Settings(this);
-
-
 
         SensorManager sm = (SensorManager) getSystemService(SENSOR_SERVICE);
         ShakeDetector shakeDetector = new ShakeDetector(this);
         shakeDetector.start(sm);
         containerView = findViewById(R.id.container);
-        fallingAnimation = AnimationUtils.loadAnimation(this,
-                R.anim.falling);
-        upAnimation = AnimationUtils.loadAnimation(this, R.anim.falling_up);
 
         Settings.setOnClickListener(this);
 
@@ -85,11 +72,8 @@ public class MainActivity extends AppCompatActivity implements ShakeDetector.Lis
 
                 addImageButton().startAnimation(AnimationUtils.loadAnimation(this,
                         R.anim.falling));
-
             }
         }
-
-
     }
 
     @Override
@@ -106,30 +90,25 @@ public class MainActivity extends AppCompatActivity implements ShakeDetector.Lis
         Random ran = new Random();
         int randomNum = ran.nextInt(6);
 
+        RelativeLayout.LayoutParams params;
         if (randomNum == 1) {
-            params = (RelativeLayout.LayoutParams) mImageView1.getLayoutParams();
+            params = (RelativeLayout.LayoutParams) coin1.getLayoutParams();
             v.setLayoutParams(params);
         } else if (randomNum == 2) {
-            params = (RelativeLayout.LayoutParams) mImageView2.getLayoutParams();
+            params = (RelativeLayout.LayoutParams) coin2.getLayoutParams();
             v.setLayoutParams(params);
         } else if (randomNum == 3) {
-            params = (RelativeLayout.LayoutParams) mImageView3.getLayoutParams();
+            params = (RelativeLayout.LayoutParams) coin3.getLayoutParams();
             v.setLayoutParams(params);
         } else if (randomNum == 4) {
-            params = (RelativeLayout.LayoutParams) mImageView4.getLayoutParams();
+            params = (RelativeLayout.LayoutParams) coin4.getLayoutParams();
             v.setLayoutParams(params);
         } else {
-            params = (RelativeLayout.LayoutParams) mImageView5.getLayoutParams();
+            params = (RelativeLayout.LayoutParams) coin5.getLayoutParams();
             v.setLayoutParams(params);
         }
-//
         containerView.addView(v);
         return v;
-    }
-
-    @Override
-    public int getFlag() {
-        return flag;
     }
 
     @Override
@@ -142,11 +121,11 @@ public class MainActivity extends AppCompatActivity implements ShakeDetector.Lis
     @Override
     protected void onPause() {
         super.onPause();
-        mImageView1.clearAnimation();
-        mImageView2.clearAnimation();
-        mImageView3.clearAnimation();
-        mImageView4.clearAnimation();
-        mImageView5.clearAnimation();
+        coin1.clearAnimation();
+        coin2.clearAnimation();
+        coin3.clearAnimation();
+        coin4.clearAnimation();
+        coin5.clearAnimation();
     }
 
 
@@ -159,14 +138,11 @@ public class MainActivity extends AppCompatActivity implements ShakeDetector.Lis
     @Override
     public void changeBg(int bg) {
         relativeLayout.setBackgroundResource(bg);
-
-
     }
 
     @Override
     public void onClick(View v) {
         settings.show(getSupportFragmentManager(),"settings");
-
     }
 
 

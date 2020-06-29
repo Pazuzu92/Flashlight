@@ -5,10 +5,14 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 
 import com.example.brightwins.BuildConfig;
 import com.squareup.seismic.ShakeDetector;
@@ -21,8 +25,6 @@ import com.example.brightwins.MainActivity;
 import com.example.brightwins.MainInterface;
 import com.example.brightwins.R;
 
-import static android.content.Context.SENSOR_SERVICE;
-
 public class Settings extends DialogFragment implements View.OnClickListener, RadioGroup.OnCheckedChangeListener, ShakeDetector.Listener {
 
     public static int SHAKE = 0;
@@ -30,9 +32,6 @@ public class Settings extends DialogFragment implements View.OnClickListener, Ra
 
     private Activity mainActivity;
     private MainInterface interface1;
-    RadioGroup rg;
-    SensorManager sm;
-    ShakeDetector shakeDetector;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -51,13 +50,8 @@ public class Settings extends DialogFragment implements View.OnClickListener, Ra
         View v = inflater.inflate(R.layout.settings, null);
         v.findViewById(R.id.btn_share).setOnClickListener(this);
         v.findViewById(R.id.change_bg).setOnClickListener(this);
-        rg = v.findViewById(R.id.rg_settings);
+        RadioGroup rg = v.findViewById(R.id.rg_settings);
         rg.setOnCheckedChangeListener(this);
-        sm = (SensorManager) mainActivity.getSystemService(SENSOR_SERVICE);
-        shakeDetector = new ShakeDetector(this);
-
-
-
         return v;
 
     }
@@ -95,6 +89,13 @@ public class Settings extends DialogFragment implements View.OnClickListener, Ra
 
     public void onDismiss(DialogInterface dialog) {
         super.onDismiss(dialog);
+    }
+
+    public void onResume(){
+        super.onResume();
+        Window window = getDialog().getWindow();
+        window.setLayout(RelativeLayout.LayoutParams.WRAP_CONTENT, 1200);
+        window.setGravity(Gravity.CENTER);
     }
 
     public void onCancel(DialogInterface dialog) {

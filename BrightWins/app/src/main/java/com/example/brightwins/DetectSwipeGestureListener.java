@@ -47,9 +47,7 @@ public class DetectSwipeGestureListener extends GestureDetector.SimpleOnGestureL
                         R.anim.falling));
 
             }
-
         }
-
         return true;
     }
 }
