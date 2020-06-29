@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:id="@+id/main_layout"
+    android:background="@drawable/background_on">
+
+    <RelativeLayout
+        android:id="@+id/screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorImage">
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/img_monkey"/>
+
+    <ImageView
+        android:id="@+id/btn_off"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="50dp"
+        android:visibility="visible"
+        android:src="@drawable/btn_off"/>
+
+    <ImageView
+        android:id="@+id/btn_on"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="50dp"
+        android:visibility="invisible"
+        android:src="@drawable/btn_on"/>
+
+
+    <android.widget.VerticalSeekBar
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:id="@+id/seekBar"
+        android:layout_width="wrap_content"
+        android:layout_height="230dp"
+        android:layout_marginEnd="20dp"
+        android:visibility="invisible"
+        android:background="@drawable/bg_slider"
+        android:progressDrawable="@drawable/seekbar_style"
+        android:thumb="@drawable/img_slider"
+        android:layout_marginRight="20dp" />
+
+
+</RelativeLayout>
