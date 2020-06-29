@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_popup_settings">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_centerVertical="true">
+
+        <ImageView
+            android:id="@+id/shake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/change_bg"
+            android:layout_marginBottom="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="60dp"
+            android:src="@drawable/img_shake" />
+
+        <ImageView
+            android:id="@+id/swipe"
+            android:layout_width="wrap_content"
+            android:layout_height="110dp"
+            android:layout_toRightOf="@+id/shake"
+            android:layout_above="@+id/change_bg"
+            android:layout_marginBottom="40dp"
+            android:src="@drawable/img_swipe" />
+
+        <ImageView
+            android:id="@+id/change_bg"
+            android:layout_width="wrap_content"
+            android:layout_height="90dp"
+            android:layout_above="@+id/btn_share"
+            android:src="@drawable/btn_change_bg" />
+
+        <ImageView
+            android:id="@+id/btn_share"
+            android:layout_width="wrap_content"
+            android:layout_height="90dp"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/btn_share" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RadioGroup
+                android:id="@+id/rg_settings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="140dp"
+                android:layout_centerVertical="true"
+                android:checkedButton="@id/btn_1"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/btn_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:layout_marginStart="100dp" />
+
+                <RadioButton
+                    android:id="@+id/btn_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="100dp" />
+
+            </RadioGroup>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
